@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Data panel: Docker, Redis and PostgreSQL">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#0f3d5c"/>
+  <ellipse cx="15.5" cy="13" rx="7.2" ry="3.1" fill="none" stroke="#8fd6ea" stroke-width="2"/>
+  <path d="M8.3 13v13.5c0 1.7 3.2 3.1 7.2 3.1s7.2-1.4 7.2-3.1V13" fill="none" stroke="#8fd6ea" stroke-width="2"/>
+  <path d="M8.3 19.8c0 1.7 3.2 3.1 7.2 3.1s7.2-1.4 7.2-3.1" fill="none" stroke="#8fd6ea" stroke-width="2"/>
+  <path d="M8.3 26.5c0 1.7 3.2 3.1 7.2 3.1s7.2-1.4 7.2-3.1" fill="none" stroke="#8fd6ea" stroke-width="2"/>
+  <rect x="27.5" y="11.5" width="12" height="6.5" rx="1.6" fill="#4ea8de"/>
+  <rect x="27.5" y="21" width="12" height="6.5" rx="1.6" fill="#f4a261"/>
+  <rect x="27.5" y="30.5" width="12" height="6.5" rx="1.6" fill="#8ac926"/>
+  <circle cx="35.6" cy="14.7" r="1" fill="#ffffff" opacity=".85"/>
+  <circle cx="35.6" cy="24.2" r="1" fill="#ffffff" opacity=".85"/>
+  <circle cx="35.6" cy="33.7" r="1" fill="#ffffff" opacity=".85"/>
+</svg>

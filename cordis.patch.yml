@@ -1,0 +1,81 @@
+# The dsh-long-data bundle patch.
+#
+# This file is how the plugin is installed. A dsh profile composes its plugin
+# tree as ordered layers — every package listed in `dsh.profile.bundles`
+# contributes the `dsh.bundle.patch` its own package.json names, then the
+# profile's own `cordis.patch.yml`, then any `--patch` overlay. This package
+# declares itself a bundle, so installing it is one `plugin_manager`
+# `install_bundle` call against this directory.
+#
+# The row is host-plane, not preset-plane: one instance owns the connection
+# settings, the `/api/dsh-long-data` endpoint and the model-facing tools, so
+# every browser window and every session shares one set of connections. The
+# same row in an agent preset would give each session its own copy of the
+# settings file and its own panel state.
+#
+# Every value below is overridable from a later layer (the active profile's
+# `cordis.patch.yml` or a `--patch` overlay); a patch replaces a row's whole
+# `config`, so restate every key you need. Anything omitted falls back to the
+# plugin's documented default. Changed connections from the panel are saved to
+# the plugin's state directory and take precedence over these defaults; these
+# values are what a fresh install starts with.
+
+- insert:
+    - id: dsh-long-data
+      name: 'dsh-long-data'
+      config:
+        # JSON document holding the saved connection settings, inside this
+        # plugin's state directory (`<harness home>/dsh-long-data`). It is
+        # written atomically with mode 0600 because it may hold passwords.
+        settingsFile: settings.json
+        # Docker CLI configuration.
+        docker:
+          # Executable name or absolute path. No shell is involved, so a path
+          # with spaces works.
+          binary: docker
+          # How long one docker command may take before it is killed.
+          timeoutMs: 20000
+        # Redis connection defaults. `mode: docker` (the default) means the
+        # plugin discovers a Redis container, uses the host port that container
+        # publishes, and falls back to the credentials in the container's
+        # environment (REDISCLI_AUTH / REDIS_PASSWORD, REDIS_USERNAME). Set
+        # `mode: manual` to use host/port/username/password instead; a non-empty
+        # `container` pins one container by name (empty = auto-pick the first
+        # running one). Values saved from the panel take precedence over these.
+        redis:
+          mode: docker
+          container: ''
+          host: 127.0.0.1
+          port: 6379
+          username: ''
+          password: ''
+          db: 0
+          tls: false
+          timeoutMs: 5000
+        # PostgreSQL connection defaults, same precedence rule as Redis:
+        # `mode: docker` discovers a PostgreSQL container and uses its published
+        # port plus POSTGRES_USER / POSTGRES_PASSWORD / POSTGRES_DB from its
+        # environment; `mode: manual` uses the fields below. Empty user/database
+        # mean "take them from the container (or fall back to postgres)".
+        postgres:
+          mode: docker
+          container: ''
+          host: 127.0.0.1
+          port: 5432
+          user: ''
+          password: ''
+          database: ''
+          ssl: prefer
+          timeoutMs: 8000
+        # Dockerfile recognition. The plugin scans every workspace directory the
+        # harness knows about, plus these extra absolute directories. `maxDepth`
+        # bounds how deep the walk goes below each root.
+        dockerfiles:
+          roots: []
+          maxDepth: 6
+        # Default number of log lines one container log request returns.
+        logTailDefault: 200
+        # Upper bound on rows returned by one PostgreSQL query.
+        maxQueryRows: 500
+        # Upper bound on keys returned by one Redis SCAN request.
+        maxKeyScan: 500

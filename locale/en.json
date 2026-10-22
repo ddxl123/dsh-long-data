@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Data panel",
+    "description": "Inspect and control Docker containers, browse Redis keys and query PostgreSQL from one panel. Connections are stored on the Host half and shared by every window. Page-only: the plugin registers no agent tools."
+  }
+}

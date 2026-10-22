@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "数据面板",
+    "description": "在一个面板里查看与控制 Docker 容器、浏览 Redis 键、查询 PostgreSQL。连接信息保存在 Host 半端，所有窗口共享。纯页面插件：不注册任何模型工具，不占用上下文。"
+  }
+}

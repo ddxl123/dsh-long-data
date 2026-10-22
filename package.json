@@ -1,0 +1,61 @@
+{
+  "name": "dsh-long-data",
+  "version": "0.5.0",
+  "description": "DeepSeek Harness plugin: a beginner-friendly Data panel for Docker (containers, images, volumes, networks, relations, Dockerfile recognition), Redis and PostgreSQL. Plain-language overview and help; Dockerized Redis/PostgreSQL are auto-discovered. Page-only, no agent tools",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "docker",
+    "redis",
+    "postgresql",
+    "database",
+    "container"
+  ],
+  "license": "MIT",
+  "author": "long0521",
+  "type": "module",
+  "main": "src/index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./client/index.js",
+    "./src/*": "./src/*",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "src",
+    "client",
+    "locale",
+    "docs",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "check": "node --check src/index.js && node --check src/config.js && node --check src/settings.js && node --check src/targets.js && node --check src/relations.js && node --check src/roles.js && node --check src/dockerfiles.js && node --check src/errors.js && node --check src/docker.js && node --check src/redis.js && node --check src/postgres.js && node --check src/ops.js && node --check src/route.js && node --check client/index.js && node --test test/"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    },
+    "plugin": {
+      "title": "Data panel",
+      "summary": "A beginner-friendly data panel: plain-language health overview, Dockerfile recognition with annotated explanations, guided actions, glossary and help, plus Docker containers/images/volumes/networks/relations and Dockerized Redis/PostgreSQL. Page-only, no agent tools."
+    }
+  }
+}
