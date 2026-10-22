@@ -80,8 +80,11 @@ Redis 与 PostgreSQL 默认**运行在 Docker 容器中**：插件自动发现�
 此 `package.json` 的目录，或在终端执行：
 
 ```bash
-dsh plugin --profile <profile> add /absolute/path/to/dsh-long-data
+git clone https://github.com/ddxl123/dsh-long-data.git
+dsh plugin --profile <profile> add ./dsh-long-data
 ```
+
+也可以让插件管理器直接安装包含此 `package.json` 的目录。
 
 安装后侧边栏会出现 **数据面板** 入口（与待办清单等面板插件并列）。通过 HMR 激活时不
 需要重启；如果替换已安装的同一个包，需要重启 Harness 让 Host 半端加载新的模块。

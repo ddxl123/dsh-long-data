@@ -103,8 +103,11 @@ The package is a bundle: its `cordis.patch.yml` inserts one host-plane row. Inst
 directory that contains this `package.json` with the plugin manager, or from a terminal:
 
 ```bash
-dsh plugin --profile <profile> add /absolute/path/to/dsh-long-data
+git clone https://github.com/ddxl123/dsh-long-data.git
+dsh plugin --profile <profile> add ./dsh-long-data
 ```
+
+Or point the plugin manager at the directory that contains this `package.json`.
 
 After installation the sidebar shows a **Data panel** entry (next to the Todo list and
 other panel plugins). No restart is needed when the bundle activates through HMR;
